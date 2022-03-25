@@ -1,0 +1,63 @@
+<button mat-mini-fab color="primary" (click)="addNewEvent()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<cdk-accordion
+  class="example-accordion"
+  [ngStyle]="{'margin-top': '10px'}"
+  *ngIf="this.items!=undefined"
+>
+  <cdk-accordion-item
+    *ngFor="let it of items; let index = index;"
+    #accordionItem="cdkAccordionItem"
+    class="example-accordion-item"
+    role="button"
+    tabindex="0"
+    [attr.id]="'accordion-header-' + index"
+    [attr.aria-expanded]="accordionItem.expanded"
+    [attr.aria-controls]="'accordion-body-' + index"
+  >
+    {{index}}
+    <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+      {{ it.event.translation }}
+      <span class="example-accordion-item-description">
+        Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+      </span>
+    </div>
+    <div
+      class="example-accordion-item-body"
+      role="region"
+      [style.display]="accordionItem.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-' + index"
+      [attr.aria-labelledby]="'accordion-header-' + index"
+    >
+      155
+    </div>
+  </cdk-accordion-item>
+</cdk-accordion>
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
+
+Logger:
+<!-- <div *ngFor="let opt of event_options">
+  <h3>{{opt}}</h3>
+</div> -->
+
+<h4>mat-select</h4>
+<mat-form-field appearance="fill">
+  <mat-label>State</mat-label>
+  <mat-select>
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let state of event_options" [value]="state"
+      >{{state}}</mat-option
+    >
+  </mat-select>
+</mat-form-field>
+
+<br />
+<br />
+<br />
+<br />
+<br />
